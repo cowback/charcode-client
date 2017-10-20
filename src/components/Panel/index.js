@@ -49,7 +49,7 @@ const Panel = ({
         below && `panel-below-${below}`,
         between && `panel-between-${between}`,
         between && (inline || row) && `panel-between-inline-${between}`,
-        (row || column || wrap) && 'panel-flex',
+        (row || column || wrap || !!direction) && 'panel-flex',
       )
     }
   >

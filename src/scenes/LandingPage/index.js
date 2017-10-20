@@ -3,6 +3,8 @@ import React from 'react'
 import Panel from 'components/Panel'
 import Button from 'components/Button'
 
+import media from 'utils/media'
+
 import phone from '../../assets/phone.png'
 import logo from '../../assets/logo.png'
 
@@ -44,13 +46,14 @@ const Footer = () => (
   </Panel>
 )
 
-const LandingPagePanel = ({ children }) => (
+const LandingPagePanel = ({ children, ...rest }) => (
   <Panel
     className="landing-page-panel"
-    column
+    direction={media.greaterThan.phone() ? 'row' : 'column'}
     x="l"
     align="center"
     justify="center"
+    {...rest}
   >
     {children}
   </Panel>
@@ -68,7 +71,7 @@ class LandingPage extends React.Component {
         <LandingPagePanel>
           <h2>Sed dorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
         </LandingPagePanel>
-        <LandingPagePanel>
+        <LandingPagePanel column>
           <h2>Fique constantemente blabla alerta</h2>
           <Button>
             Começe agora
