@@ -56,3 +56,9 @@ button:focus {
     font-size: 15px;
   }
 }
+
+@media (min-width: 1599px) {
+  html {
+    font-size: 18px;
+  }
+}

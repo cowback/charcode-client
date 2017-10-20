@@ -21,8 +21,8 @@
 
 .phone-image {
   background-image: url('../../assets/phone.png');
-  background-size: cover;
+  background-size: contain;
   background-repeat: no-repeat;
   background-position: 50% 50%;
-  width: 100%;
+  width: 50%;
 }
