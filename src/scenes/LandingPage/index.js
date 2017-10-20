@@ -31,30 +31,41 @@ class LandingPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      registerSteps: 0
+      registerSteps: 0,
+      phone: '',
+      password: '',
+      cep: '',
     }
   }
 
-  onHeaderButtonClick = () => this.setState({registerSteps: 1})
+  // TODO: integrate with API, set user logged/unlogged
+
+  onLoginButtonClick = () => this.setState({registerSteps: 1})
 
   onAccessButtonClick = () => this.setState({registerSteps: 2})
 
   onCepButtonClick = () => this.setState({registerSteps: 0})
 
+  onPhoneChange = (event) => this.setState({phone: event.target.value})
+
+  onPasswordChange = (event) => this.setState({password: event.target.value})
+
+  onCepChange = (event) => this.setState({cep: event.target.value})
+
   render() {
     const accessModalChildren = (
       <Panel column centered>
         <h3>Queijo</h3>
-        <Input type="text" placeholder="Telefone" onChange={(event) => console.log(event.target.value)} required />
-        <Input type="password" placeholder="Senha" onChange={(event) => console.log(event.target.value)} required />
-        <Button small ghost onClick={this.onAccessButtonClick}>Entrar</Button>
+        <Input type="text" placeholder="Telefone (9 últimos digitos)" onChange={this.onPhoneChange} />
+        <Input type="password" placeholder="Senha (mínimo 6 dígitos)" onChange={this.onPasswordChange} />
+        <Button small ghost onClick={this.onAccessButtonClick} disabled={this.state.phone.length !== 9 || this.state.password.length < 6}>Entrar</Button>
       </Panel>
     )
     const cepModalChildren = (
       <Panel column centered>
         <h3>Goiabada</h3>
-        <Input type="text" placeholder="CEP" onChange={(event) => console.log(event.target.value)} required />
-        <Button small ghost onClick={this.onCepButtonClick}>Cadastrar CEP</Button>
+        <Input type="text" placeholder="CEP (apenas os 11 dígitos)" onChange={this.onCepChange} />
+        <Button small ghost onClick={this.onCepButtonClick} disabled={this.state.cep.length !== 11}>Cadastrar CEP</Button>
       </Panel>
     )
 
@@ -66,9 +77,9 @@ class LandingPage extends React.Component {
         <Modal isOpen={this.state.registerSteps === 2}>
           {cepModalChildren}
         </Modal>
-        <Header onButtonClick={this.onHeaderButtonClick}>
-          <Button small ghost onClick={this.onButtonClick}>
-            entrar
+        <Header >
+          <Button small ghost onClick={this.onLoginButtonClick}>
+            Entrar
           </Button>
         </Header>
         <LandingPagePanel>
