@@ -8,9 +8,10 @@ const initialState = {
 
 const reducer = handleActions({
   [setUser]: (state, action) => ({
+    ...state,
     user: action.payload,
     authenticated: !!action.payload,
-  })
+  }),
 }, initialState)
 
 export const isLogged = state => state.auth.authenticated
