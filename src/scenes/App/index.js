@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 
 import bindActionCreators from 'utils/action-binder'
 import { isLogged } from 'store/auth'
-import { authenticate } from 'store/auth/actions'
+import { login } from 'store/auth/actions'
 
 const App = ({ children }) => (
   <main>
@@ -17,6 +17,6 @@ export default connect(
     isLogged: isLogged(state),
   }),
   bindActionCreators({
-    authenticate,
+    login,
   })
 )(App)

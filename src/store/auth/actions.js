@@ -2,10 +2,14 @@ import { createAction } from 'redux-actions'
 
 const setUser = createAction('SET_USER')
 
-const authenticate = (phone, password, api) => dispatch =>
-  api.authenticate().then(user => dispatch(setUser(user)))
+const login = (phone, password) => (dispatch, _, api) =>
+  api.login().then(user => dispatch(setUser(user)))
+
+const logout = (phone) => (dispatch, _, api) =>
+  api.logout().then(() => dispatch(setUser(null)))
 
 export {
   setUser,
-  authenticate,
+  login,
+  logout
 }

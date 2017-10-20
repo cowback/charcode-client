@@ -1,4 +1,9 @@
 import React from 'react'
+import { connect } from 'react-redux'
+
+import bindActionCreators from 'utils/action-binder'
+import { isLogged } from 'store/auth'
+import { login, logout } from 'store/auth/actions'
 
 import Panel from 'components/Panel'
 import Button from 'components/Button'
@@ -53,20 +58,21 @@ class LandingPage extends React.Component {
 
   handleChange = (event) => this.setState({[event.target.name]: event.target.value})
 
-  onLogoutButtonClick = () => null // set unlogged flag
+  onLogoutButtonClick = () => this.props.logout() // set unlogged flag
 
   onLoginButtonClick = () => this.setState({registerSteps: 1,})
 
   onAccessButtonClick = () => {
     // TODO: verify if user is registered
     // if yes, set logged flag and redirect to status page
-
+    // this.props.login(this.state.phone, this.state.password)
     // if not, go to CEP step
     this.setState({registerSteps: 2,})
   }
 
   onCepButtonClick = () => {
     // TODO: set logged flag
+    this.props.login(this.state.phone, this.state.password)
     this.resetState()
   }
 
@@ -107,10 +113,10 @@ class LandingPage extends React.Component {
           {cepModalChildren}
         </Modal>
         <Header >
-          <Button small ghost onClick={this.onLoginButtonClick}>
+          <Button small ghost hide={this.props.isLogged} onClick={this.onLoginButtonClick}>
             Entrar
           </Button>
-          <Button small ghost onClick={this.onLogoutButtonClick}>
+          <Button small ghost hide={!this.props.isLogged} onClick={this.onLogoutButtonClick}>
             Sair
           </Button>
         </Header>
@@ -133,4 +139,13 @@ class LandingPage extends React.Component {
   }
 }
 
-export default LandingPage
+export default connect(
+  state => ({
+    location: state.location,
+    isLogged: isLogged(state)
+  }),
+  bindActionCreators({
+    login,
+    logout
+  })
+)(LandingPage)
