@@ -10,9 +10,10 @@ import { ConnectedRouter, routerReducer, routerMiddleware } from 'react-router-r
 import createHistory from 'history/createBrowserHistory'
 import { Route, Switch } from 'react-router'
 
-import App from './scenes/App'
-import Sandbox from './scenes/Sandbox'
-import reducers from './store/reducers'
+import App from 'scenes/App'
+import LandingPage from 'scenes/LandingPage'
+import Sandbox from 'scenes/Sandbox'
+import reducers from 'store/reducers'
 
 import registerServiceWorker from './registerServiceWorker'
 import './index.css'
@@ -34,7 +35,7 @@ ReactDOM.render(
   <Provider store={store}>
     <ConnectedRouter history={history}>
       <Switch>
-        <Route exact path="/" component={App} />
+        <Route exact path="/" component={LandingPage} />
         <Route path="/sandbox" component={Sandbox} />
       </Switch>
     </ConnectedRouter>
