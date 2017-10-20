@@ -11,6 +11,7 @@ const Button = ({
   href,
   small,
   ghost,
+  hide,
   disabled,
   onClick,
 }) => {
@@ -18,7 +19,7 @@ const Button = ({
     : href ? 'a'
     : 'button'
 
-  return (
+  return hide ? null : (
     <Tag
       to={to}
       href={href}
