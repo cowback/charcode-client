@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Input from 'components/Input'
 import Panel from 'components/Panel'
 
 import cn from 'utils/cn'
@@ -9,7 +8,7 @@ import './modal.css'
 
 const Modal = ({
   isOpen,
-  content
+  children
 }) => {
 
   return !isOpen ? null : (
@@ -23,9 +22,7 @@ const Modal = ({
           'modal__card',
         )}
       >
-        <Panel column centenred>
-          {content}
-        </Panel>
+        {children}
       </div>
     </div>
   )
