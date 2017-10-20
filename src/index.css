@@ -34,3 +34,9 @@ h6 {
   color: #222;
   font-family: 'Neuton', serif;
 }
+
+@media (max-width: 599px) {
+  html {
+    font-size: 15px;
+  }
+}
