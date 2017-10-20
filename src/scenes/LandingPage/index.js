@@ -59,8 +59,6 @@ class LandingPage extends React.Component {
 
   handleChange = (event) => this.setState({[event.target.name]: event.target.value})
 
-  onLogoutButtonClick = () => this.props.logout() // set unlogged flag
-
   onLoginButtonClick = () => this.setState({registerSteps: 1,})
 
   onAccessButtonClick = () => {
@@ -117,9 +115,6 @@ class LandingPage extends React.Component {
           <Button small ghost hide={this.props.isLogged} onClick={this.onLoginButtonClick}>
             Entrar
           </Button>
-          <Button small ghost hide={!this.props.isLogged} onClick={this.onLogoutButtonClick}>
-            Sair
-          </Button>
         </Header>
         <LandingPagePanel inline>
           <h2 style={{ marginBottom: 0 }}>Lorem ipsum dolor sit amet.</h2>
@@ -147,6 +142,5 @@ export default connect(
   }),
   bindActionCreators({
     login,
-    logout
   })
 )(LandingPage)

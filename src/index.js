@@ -19,8 +19,6 @@ import api from './api'
 import registerServiceWorker from './registerServiceWorker'
 import './index.css'
 
-console.log(api);
-
 const history = createHistory()
 const store = createStore(
   combineReducers({
