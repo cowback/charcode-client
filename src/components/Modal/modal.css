@@ -17,6 +17,8 @@
   border-radius: 5px;
   padding: 30px;
   background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
 }
 
 .modal .modal__card h3 {
