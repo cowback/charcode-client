@@ -19,12 +19,13 @@ import logo from '../../assets/logo.png'
 import './landing-page.css'
 
 const LandingPagePanel = ({ children, ...rest }) => (
-  <Panel className="landing-page-panel" x="l" >
+  <Panel className="landing-page-panel" x="m">
     <Panel
       className="landing-page-panel__content"
       direction={media.greaterThan.phone() ? 'row' : 'column'}
       align="center"
-      justify="center"
+      justify={media.greaterThan.phone() ? 'space-between' : 'center'}
+      between={media.greaterThan.phone() && 'xl'}
       {...rest}
     >
       {children}
@@ -120,14 +121,14 @@ class LandingPage extends React.Component {
             Sair
           </Button>
         </Header>
-        <LandingPagePanel>
+        <LandingPagePanel inline>
           <h2 style={{ marginBottom: 0 }}>Lorem ipsum dolor sit amet.</h2>
-          <PhoneImage size={media.greaterThan.phone() ? 500 : 400} />
+          <PhoneImage size={media.greaterThan.phone() ? 600 : 400} />
         </LandingPagePanel>
         <LandingPagePanel>
           <h2>Sed dorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
         </LandingPagePanel>
-        <LandingPagePanel column>
+        <LandingPagePanel column justify="center">
           <h2>Fique constantemente blabla alerta</h2>
           <Button onClick={this.onLoginButtonClick}>
             Começe agora
