@@ -21,7 +21,7 @@ const Header = () => (
   >
     <Panel row align="center" between="s">
       <img src={logo} width="50" />
-      <h4>name</h4>
+      <h4>climalerta</h4>
     </Panel>
     <Button small ghost>
       entrar
