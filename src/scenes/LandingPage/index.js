@@ -2,7 +2,9 @@ import React from 'react'
 
 import Panel from 'components/Panel'
 import Button from 'components/Button'
+
 import phone from '../../assets/phone.png'
+import logo from '../../assets/logo.png'
 
 import './landing-page.css'
 
@@ -11,13 +13,16 @@ const Header = () => (
     className="header"
     tag="header"
     row
-    x="l"
+    x="m"
     align="center"
     justify="space-between"
     sizing="border"
     fit
   >
-    <h4>logo</h4>
+    <Panel row align="center" between="s">
+      <img src={logo} width="50" />
+      <h4>name</h4>
+    </Panel>
     <Button small ghost>
       entrar
     </Button>
