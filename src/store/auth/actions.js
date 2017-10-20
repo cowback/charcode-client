@@ -2,9 +2,8 @@ import { createAction } from 'redux-actions'
 
 const setUser = createAction('SET_USER')
 
-const authenticate = (phone, password) => dispatch => Promise
-  .resolve(true)
-  .then(() => dispatch(setUser({ phone: 123, password: 123 })))
+const authenticate = (phone, password, api) => dispatch =>
+  api.authenticate().then(user => dispatch(setUser(user)))
 
 export {
   setUser,

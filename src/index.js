@@ -15,6 +15,7 @@ import LandingPage from 'scenes/LandingPage'
 import Sandbox from 'scenes/Sandbox'
 import reducers from 'store/reducers'
 
+import api from './api'
 import registerServiceWorker from './registerServiceWorker'
 import './index.css'
 
@@ -26,7 +27,7 @@ const store = createStore(
   }),
   applyMiddleware(
     routerMiddleware(history),
-    thunk,
+    thunk.withExtraArgument(api),
     multi
   )
 )

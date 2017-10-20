@@ -13,6 +13,6 @@ const reducer = handleActions({
   })
 }, initialState)
 
-export const isAuthenticated = state => state.auth.authenticated
+export const isLogged = state => state.auth.authenticated
 
 export default reducer
