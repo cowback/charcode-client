@@ -1,15 +1,26 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { replace } from 'react-router-redux'
 
 import bindActionCreators from 'utils/action-binder'
 import { isLogged } from 'store/auth'
 import { login } from 'store/auth/actions'
 
-const App = ({ children }) => (
-  <main>
-    {children}
-  </main>
-)
+class App extends React.Component {
+  componentDidMount() {
+    this.props.goTo(
+      this.props.isLogged ? '/' : '/landing'
+    )
+  }
+
+  render() {
+    return (
+      <main>
+        {this.props.children}
+      </main>
+    )
+  }
+}
 
 export default connect(
   state => ({
@@ -18,5 +29,6 @@ export default connect(
   }),
   bindActionCreators({
     login,
+    goTo: path => replace(path)
   })
 )(App)
