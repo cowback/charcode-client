@@ -13,6 +13,7 @@
 }
 
 .modal .modal__card {
+  z-index: 11;
   border-radius: 5px;
   padding: 30px;
   background-color: #FFFFFF;

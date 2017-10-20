@@ -9,6 +9,10 @@ body {
   color: #333;
 }
 
+figure {
+  margin: 0;
+}
+
 h1 {
   font-size: 4rem;
 }
@@ -33,6 +37,18 @@ h5,
 h6 {
   color: #222;
   font-family: 'Neuton', serif;
+}
+
+
+a {
+  color: #5CC18D;
+  text-decoration-skip: ink;
+}
+
+a:focus,
+button:focus {
+  outline: 3px solid #5CC18D;
+  outline-offset: 2px;
 }
 
 @media (max-width: 599px) {

@@ -27,6 +27,15 @@ const LandingPagePanel = ({ children, ...rest }) => (
   </Panel>
 )
 
+const PhoneImage = ({ size }) => (
+  <figure
+    className="phone-image"
+    style={{
+      height: size,
+    }}
+  />
+)
+
 class LandingPage extends React.Component {
   constructor(props) {
     super(props)
@@ -38,7 +47,7 @@ class LandingPage extends React.Component {
     }
   }
 
-  // TODO: integrate with API, set user logged/unlogged
+  // TODO: integrate with API, set user logged/unlogged, add way to close modal
 
   onLoginButtonClick = () => this.setState({registerSteps: 1})
 
@@ -83,15 +92,15 @@ class LandingPage extends React.Component {
           </Button>
         </Header>
         <LandingPagePanel>
-          <h2>Lorem ipsum dolor sit amet.</h2>
-          <div className="phone-image" />
+          <h2 style={{ marginBottom: 0 }}>Lorem ipsum dolor sit amet.</h2>
+          <PhoneImage size={media.greaterThan.phone() ? 500 : 400} />
         </LandingPagePanel>
         <LandingPagePanel>
           <h2>Sed dorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
         </LandingPagePanel>
         <LandingPagePanel column>
           <h2>Fique constantemente blabla alerta</h2>
-          <Button>
+          <Button onClick={this.onLoginButtonClick}>
             Começe agora
           </Button>
         </LandingPagePanel>
