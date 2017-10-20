@@ -8,11 +8,13 @@ import './modal.css'
 
 const Modal = ({
   isOpen,
+  onClick,
   children
 }) => {
 
   return !isOpen ? null : (
     <div
+      onClick={onClick}
       className={cn(
         'modal',
       )}

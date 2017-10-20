@@ -49,46 +49,69 @@ class LandingPage extends React.Component {
 
   // TODO: integrate with API, set user logged/unlogged, add way to close modal
 
-  onLoginButtonClick = () => this.setState({registerSteps: 1})
+  // handleStep = (event) => this.setState({registerSteps: event.target.step})
 
-  onAccessButtonClick = () => this.setState({registerSteps: 2})
+  handleChange = (event) => this.setState({[event.target.name]: event.target.value})
 
-  onCepButtonClick = () => this.setState({registerSteps: 0})
+  onLogoutButtonClick = () => null // set unlogged flag
 
-  onPhoneChange = (event) => this.setState({phone: event.target.value})
+  onLoginButtonClick = () => this.setState({registerSteps: 1,})
 
-  onPasswordChange = (event) => this.setState({password: event.target.value})
+  onAccessButtonClick = () => {
+    // TODO: verify if user is registered
+    // if yes, set logged flag and redirect to status page
 
-  onCepChange = (event) => this.setState({cep: event.target.value})
+    // if not, go to CEP step
+    this.setState({registerSteps: 2,})
+  }
+
+  onCepButtonClick = () => {
+    // TODO: set logged flag
+    this.resetState()
+  }
+
+  resetState = (event) => {
+    if (!event || event.target === event.currentTarget){
+      this.setState({
+        registerSteps: 0,
+        phone: '',
+        password: '',
+        cep: '',
+      })
+    }
+  }
 
   render() {
     const accessModalChildren = (
       <Panel column centered>
         <h3>Queijo</h3>
-        <Input type="text" placeholder="Telefone (9 últimos digitos)" onChange={this.onPhoneChange} />
-        <Input type="password" placeholder="Senha (mínimo 6 dígitos)" onChange={this.onPasswordChange} />
+        <Input type="text" name="phone" placeholder="Telefone (9 últimos digitos)" onChange={this.handleChange} />
+        <Input type="password" name="password" placeholder="Senha (mínimo 6 dígitos)" onChange={this.handleChange} />
         <Button small ghost onClick={this.onAccessButtonClick} disabled={this.state.phone.length !== 9 || this.state.password.length < 6}>Entrar</Button>
       </Panel>
     )
     const cepModalChildren = (
       <Panel column centered>
         <h3>Goiabada</h3>
-        <Input type="text" placeholder="CEP (apenas os 11 dígitos)" onChange={this.onCepChange} />
+        <Input type="text" name="cep" placeholder="CEP (apenas os 11 dígitos)" onChange={this.handleChange} />
         <Button small ghost onClick={this.onCepButtonClick} disabled={this.state.cep.length !== 11}>Cadastrar CEP</Button>
       </Panel>
     )
 
     return (
       <main className="landing-page" style={{ paddingTop: '4rem' }}>
-        <Modal isOpen={this.state.registerSteps === 1}>
+        <Modal onClick={this.resetState} isOpen={this.state.registerSteps === 1}>
           {accessModalChildren}
         </Modal>
-        <Modal isOpen={this.state.registerSteps === 2}>
+        <Modal onClick={this.resetState} isOpen={this.state.registerSteps === 2}>
           {cepModalChildren}
         </Modal>
         <Header >
           <Button small ghost onClick={this.onLoginButtonClick}>
             Entrar
+          </Button>
+          <Button small ghost onClick={this.onLogoutButtonClick}>
+            Sair
           </Button>
         </Header>
         <LandingPagePanel>
