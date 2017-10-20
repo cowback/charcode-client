@@ -12,6 +12,7 @@ const Button = ({
   small,
   ghost,
   disabled,
+  onClick,
 }) => {
   const Tag = to ? Link
     : href ? 'a'
@@ -27,6 +28,7 @@ const Button = ({
         small && 'button--small',
         ghost && 'button--ghost',
       )}
+      onClick={onClick}
       >
       {children}
     </Tag>
