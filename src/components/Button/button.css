@@ -4,7 +4,7 @@
   border: 1px solid #5CC18D;
   color: #fff;
   transition: background-color 0.25s, box-shadow 0.25s ease-in-out;
-  font-weight: bold;
+  font-weight: normal;
   cursor: pointer;
   border-radius: 3px;
   font-family: inherit;

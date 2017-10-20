@@ -4,57 +4,26 @@ import Panel from 'components/Panel'
 import Button from 'components/Button'
 import Input from 'components/Input'
 import Modal from 'components/Modal'
+import Header from 'components/Header'
+import Footer from 'components/Footer'
 
-import phone from '../../assets/phone.png'
+import media from 'utils/media'
+
 import logo from '../../assets/logo.png'
 
 import './landing-page.css'
 
-const Header = ({onHeaderButtonClick}) => (
-  <Panel
-    className="header"
-    tag="header"
-    row
-    x="m"
-    align="center"
-    justify="space-between"
-    sizing="border"
-    fit
-  >
-    <Panel row align="center" between="s">
-      <img src={logo} width="50" />
-      <h4>climalerta</h4>
+const LandingPagePanel = ({ children, ...rest }) => (
+  <Panel className="landing-page-panel" x="l" >
+    <Panel
+      className="landing-page-panel__content"
+      direction={media.greaterThan.phone() ? 'row' : 'column'}
+      align="center"
+      justify="center"
+      {...rest}
+    >
+      {children}
     </Panel>
-    <Button small ghost onButtonClick={onHeaderButtonClick}>
-      entrar
-    </Button>
-  </Panel>
-)
-
-const Footer = () => (
-  <Panel
-    tag="footer"
-    className="footer"
-    inset="l"
-    between="m"
-    row
-    justify="space-around"
-  >
-    <a target="_blank" href="https://github.com/cowback/">Contribua</a>
-    <a target="_blank" href="https://github.com/cowback/">Link</a>
-    <a target="_blank" href="https://github.com/cowback/">Outro link</a>
-  </Panel>
-)
-
-const LandingPagePanel = ({ children }) => (
-  <Panel
-    className="landing-page-panel"
-    column
-    x="l"
-    align="center"
-    justify="center"
-  >
-    {children}
   </Panel>
 )
 
@@ -66,23 +35,11 @@ class LandingPage extends React.Component {
     }
   }
 
-  onHeaderButtonClick() {
-    this.setState({
-      registerSteps: 1
-    })
-  }
+  onHeaderButtonClick = () => this.setState({registerSteps: 1})
 
-  onAccessButtonClick() {
-    this.setState({
-      registerSteps: 2
-    })
-  }
+  onAccessButtonClick = () => this.setState({registerSteps: 2})
 
-  onCepButtonClick() {
-    this.setState({
-      registerSteps: 0
-    })
-  }
+  onCepButtonClick = () => this.setState({registerSteps: 0})
 
   render() {
     const accessModalChildren = (
@@ -103,9 +60,17 @@ class LandingPage extends React.Component {
 
     return (
       <main className="landing-page" style={{ paddingTop: '4rem' }}>
-        <Modal isOpen={this.state.registerSteps === 1} children={accessModalChildren} />
-        <Modal isOpen={this.state.registerSteps === 2} children={cepModalChildren} />
-        <Header onButtonClick={this.onHeaderButtonClick} />
+        <Modal isOpen={this.state.registerSteps === 1}>
+          {accessModalChildren}
+        </Modal>
+        <Modal isOpen={this.state.registerSteps === 2}>
+          {cepModalChildren}
+        </Modal>
+        <Header onButtonClick={this.onHeaderButtonClick}>
+          <Button small ghost onClick={this.onButtonClick}>
+            entrar
+          </Button>
+        </Header>
         <LandingPagePanel>
           <h2>Lorem ipsum dolor sit amet.</h2>
           <div className="phone-image" />
@@ -113,7 +78,7 @@ class LandingPage extends React.Component {
         <LandingPagePanel>
           <h2>Sed dorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
         </LandingPagePanel>
-        <LandingPagePanel>
+        <LandingPagePanel column>
           <h2>Fique constantemente blabla alerta</h2>
           <Button>
             Começe agora
