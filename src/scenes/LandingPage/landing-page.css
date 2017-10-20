@@ -26,14 +26,3 @@
   background-size: contain;
   background-repeat: no-repeat;
 }
-
-a {
-  color: #5CC18D;
-  text-decoration-skip: ink;
-}
-
-a:focus,
-button:focus {
-  outline: 3px solid #5CC18D;
-  outline-offset: 2px;
-}

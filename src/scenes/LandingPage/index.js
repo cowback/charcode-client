@@ -26,7 +26,7 @@ const LandingPagePanel = ({ children, ...rest }) => (
 class LandingPage extends React.Component {
   render() {
     return (
-      <main className="landing-page" style={{ paddingTop: '4rem' }}>
+      <main className="landing-page">
         <Header />
         <LandingPagePanel>
           <h2>Lorem ipsum dolor sit amet.</h2>

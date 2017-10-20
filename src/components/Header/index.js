@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import Panel from 'components/Panel'
 import Button from 'components/Button'
@@ -17,10 +18,10 @@ const Header = () => (
     sizing="border"
     fit
   >
-    <Panel row align="center" between="s">
-      <img src={logo} width="50" alt="logo" />
-      <h4>climalerta</h4>
-    </Panel>
+      <Panel row align="center" between="s">
+        <img src={logo} width="50" alt="logo" />
+        <h4>climalerta</h4>
+      </Panel>
     <Button small ghost>
       entrar
     </Button>
