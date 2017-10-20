@@ -7,7 +7,7 @@ import Button from 'components/Button'
 import logo from '../../assets/logo.png'
 import './header.css'
 
-const Header = () => (
+const Header = ({children}) => (
   <Panel
     className="header"
     tag="header"
@@ -18,13 +18,11 @@ const Header = () => (
     sizing="border"
     fit
   >
-      <Panel row align="center" between="s">
-        <img src={logo} width="50" alt="logo" />
-        <h4>climalerta</h4>
-      </Panel>
-    <Button small ghost>
-      entrar
-    </Button>
+    <Panel row align="center" between="s">
+      <img src={logo} width="50" alt="logo" />
+      <h4>climalerta</h4>
+    </Panel>
+    {children}
   </Panel>
 )
 
