@@ -9,6 +9,10 @@ body {
   color: #333;
 }
 
+figure {
+  margin: 0;
+}
+
 h1 {
   font-size: 4rem;
 }

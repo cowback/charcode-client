@@ -23,14 +23,23 @@ const LandingPagePanel = ({ children, ...rest }) => (
   </Panel>
 )
 
+const PhoneImage = ({ size }) => (
+  <figure
+    className="phone-image"
+    style={{
+      height: size,
+    }}
+  />
+)
+
 class LandingPage extends React.Component {
   render() {
     return (
       <main className="landing-page">
         <Header />
         <LandingPagePanel>
-          <h2>Lorem ipsum dolor sit amet.</h2>
-          <div className="phone-image" />
+          <h2 style={{ marginBottom: 0 }}>Lorem ipsum dolor sit amet.</h2>
+          <PhoneImage size={media.greaterThan.phone() ? 500 : 400} />
         </LandingPagePanel>
         <LandingPagePanel>
           <h2>Sed dorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
