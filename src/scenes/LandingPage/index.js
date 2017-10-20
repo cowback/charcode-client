@@ -5,7 +5,6 @@ import Button from 'components/Button'
 
 import media from 'utils/media'
 
-import phone from '../../assets/phone.png'
 import logo from '../../assets/logo.png'
 
 import './landing-page.css'
@@ -22,7 +21,7 @@ const Header = () => (
     fit
   >
     <Panel row align="center" between="s">
-      <img src={logo} width="50" />
+      <img src={logo} width="50" alt="logo" />
       <h4>climalerta</h4>
     </Panel>
     <Button small ghost>
@@ -35,27 +34,33 @@ const Footer = () => (
   <Panel
     tag="footer"
     className="footer"
-    inset="l"
-    between="m"
-    row
-    justify="space-around"
   >
-    <a target="_blank" href="https://github.com/cowback/">Contribua</a>
-    <a target="_blank" href="https://github.com/cowback/">Link</a>
-    <a target="_blank" href="https://github.com/cowback/">Outro link</a>
+    <Panel
+      tag="section"
+      className="footer__content"
+      inset="l"
+      between="m"
+      row
+      justify="space-around"
+    >
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/cowback/">Contribua</a>
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/cowback/">Link</a>
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/cowback/">Outro link</a>
+    </Panel>
   </Panel>
 )
 
 const LandingPagePanel = ({ children, ...rest }) => (
-  <Panel
-    className="landing-page-panel"
-    direction={media.greaterThan.phone() ? 'row' : 'column'}
-    x="l"
-    align="center"
-    justify="center"
-    {...rest}
-  >
-    {children}
+  <Panel className="landing-page-panel" x="l" >
+    <Panel
+      className="landing-page-panel__content"
+      direction={media.greaterThan.phone() ? 'row' : 'column'}
+      align="center"
+      justify="center"
+      {...rest}
+    >
+      {children}
+    </Panel>
   </Panel>
 )
 

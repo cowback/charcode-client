@@ -2,6 +2,10 @@
   position: fixed;
   top: 0;
   z-index: 1;
+  max-width: 800px;
+  margin: auto;
+  right: 50%;
+  transform: translateX(50%);
 }
 
 .landing-page {
@@ -9,9 +13,14 @@
 }
 
 .landing-page-panel {
-  min-height: 100vh;
   position: relative;
   text-align: center;
+}
+
+.landing-page-panel__content {
+  min-height: 100vh;
+  margin: 0 auto;
+  max-width: 800px;
 }
 
 .landing-page-panel:nth-child(odd) {
@@ -31,6 +40,11 @@
 .footer {
   background-color: #eee;
   border-top: 1px solid #ccc;
+}
+
+.footer__content {
+  margin: 0 auto;
+  max-width: 800px;
 }
 
 a {
