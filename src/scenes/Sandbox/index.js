@@ -2,6 +2,7 @@ import React from 'react'
 
 import Panel from 'components/Panel'
 import Button from 'components/Button'
+import Input from 'components/Input'
 
 import './sandbox.css'
 
@@ -203,6 +204,16 @@ const Sandbox = ({ children }) => (
         <Panel className="sandbox__sample-box" inset="m">
           <samp>inset="m"</samp>
         </Panel>
+      </Panel>
+    </section>
+    <h1>{'<Button />'}</h1>
+    <section className="sandbox__sample">
+      <Panel column centered>
+        <form>
+          <Input type="text" placeholder="text" />
+          <Input type="number" placeholder="number" required />
+          <Input type="submit">Submit</Input>
+        </form>
       </Panel>
     </section>
   </main>
