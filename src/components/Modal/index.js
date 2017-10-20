@@ -23,7 +23,7 @@ const Modal = ({
           'modal__card',
         )}
       >
-        <Panel column centenred>
+        <Panel column centered>
           {content}
         </Panel>
       </div>

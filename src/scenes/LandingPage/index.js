@@ -2,53 +2,12 @@ import React from 'react'
 
 import Panel from 'components/Panel'
 import Button from 'components/Button'
+import Header from 'components/Header'
+import Footer from 'components/Footer'
 
 import media from 'utils/media'
 
-import logo from '../../assets/logo.png'
-
 import './landing-page.css'
-
-const Header = () => (
-  <Panel
-    className="header"
-    tag="header"
-    row
-    x="m"
-    align="center"
-    justify="space-between"
-    sizing="border"
-    fit
-  >
-    <Panel row align="center" between="s">
-      <img src={logo} width="50" alt="logo" />
-      <h4>climalerta</h4>
-    </Panel>
-    <Button small ghost>
-      entrar
-    </Button>
-  </Panel>
-)
-
-const Footer = () => (
-  <Panel
-    tag="footer"
-    className="footer"
-  >
-    <Panel
-      tag="section"
-      className="footer__content"
-      inset="l"
-      between="m"
-      row
-      justify="space-around"
-    >
-      <a target="_blank" rel="noopener noreferrer" href="https://github.com/cowback/">Contribua</a>
-      <a target="_blank" rel="noopener noreferrer" href="https://github.com/cowback/">Link</a>
-      <a target="_blank" rel="noopener noreferrer" href="https://github.com/cowback/">Outro link</a>
-    </Panel>
-  </Panel>
-)
 
 const LandingPagePanel = ({ children, ...rest }) => (
   <Panel className="landing-page-panel" x="l" >
