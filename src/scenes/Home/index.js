@@ -2,8 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import bindActionCreators from 'utils/action-binder'
-import { isLogged } from 'store/auth'
-import { logout } from 'store/auth/actions'
+import { status } from 'store/status'
+import { getUserStatus } from 'store/status/actions'
 
 import Panel from 'components/Panel'
 
@@ -27,11 +27,11 @@ const HomePagePanel = ({children, ...rest}) => (
   </Panel>
 )
 
-const CheckmarkImage = ({size}) => (
+const CheckmarkImage = ({size, status}) => (
   <figure
     className={cn(
       'image',
-      true && 'image--ok'
+      status === 'ok' && 'image--ok'
     )}
     style={{
       height: size,
@@ -40,12 +40,16 @@ const CheckmarkImage = ({size}) => (
 )
 
 class Home extends React.Component {
+  componentDidMount() {
+    this.props.getUserStatus(null)
+  }
+
   render() {
     return (
       <main className="home" style={{ paddingTop: '4rem' }}>
         <HomePagePanel column centered>
-          <CheckmarkImage size={300} />
-          <h3>{'Status: OK'}</h3>
+          <CheckmarkImage size={300} status={this.props.status} />
+          <h3>{`Status: ${this.props.status}`}</h3>
         </HomePagePanel>
         {this.props.children}
       </main>
@@ -55,9 +59,10 @@ class Home extends React.Component {
 
 export default connect(
   state => ({
-    isLogged: isLogged(state),
+    location: state.location,
+    status: status(state),
   }),
   bindActionCreators({
-    logout,
-  })
+    getUserStatus,
+  }),
 )(Home)
