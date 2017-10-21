@@ -1,4 +1,4 @@
-import cookie from './cookie';
+import cookie from './cookie'
 
 const baseURL = 'http://localhost:3000/api/v1/'
 

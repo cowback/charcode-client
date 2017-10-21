@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { replace } from 'react-router-redux'
 
 import bindActionCreators from 'utils/action-binder'
-import { isLogged } from 'store/auth'
+import { isLogged, getError } from 'store/auth'
 import * as actions from 'store/auth/actions'
 
 import Header from 'components/Header'
@@ -22,7 +22,7 @@ var applicationServerPublicKey = 'BHYkfo6khRJ4t7Q4-UQe07evV794zNYH1NPJOScnYmlVoG
 function subscribe() {
   navigator.serviceWorker.ready.then(function (reg) {
       var subscribeParams = {userVisibleOnly: true};
-      
+
       var applicationServerKey = urlB64ToUint8Array(applicationServerPublicKey);
       subscribeParams.applicationServerKey = applicationServerKey;
 
@@ -44,7 +44,7 @@ function subscribe() {
 function sendSubscriptionToServer(endpoint, key, auth) {
   var encodedKey = btoa(String.fromCharCode.apply(null, new Uint8Array(key)));
   var encodedAuth = btoa(String.fromCharCode.apply(null, new Uint8Array(auth)));
-  
+
   var pushInfo = {
     "endpoint": endpoint,
     "keys": {
@@ -89,6 +89,7 @@ class App extends React.Component {
       )
       if (isLogged) {
         subscribe()
+        this.setState({ registerSteps: 0, })
       }
     }
   }
@@ -119,7 +120,7 @@ class App extends React.Component {
   onLoginButtonClick = () => this.setState({ registerSteps: 1, })
 
   handleLogin = ({ password, mobile }) => {
-    this.props.login({ password, mobile }).then(this.handleClose)
+    this.props.login({ password, mobile })
   }
 
   handleAccountCreation = cep => {
@@ -133,6 +134,7 @@ class App extends React.Component {
       <main>
         <Modal onClose={this.handleClose} isOpen={this.state.registerSteps === 1}>
           <UserForm
+            error={this.props.authError}
             onLogin={this.handleLogin}
             onCreateAccount={user => this.setState({ registerSteps: 2, user })}
           />
@@ -161,6 +163,7 @@ export default connect(
   state => ({
     location: state.location,
     isLogged: isLogged(state),
+    authError: getError(state),
   }),
   bindActionCreators({
     ...actions,

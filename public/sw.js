@@ -1,4 +1,4 @@
-let cacheName = "climalerta-1";
+let cacheName = "climalerta-2";
 let chacheFiles = [
 	'./',
 	'./favicon.ico',
@@ -16,7 +16,7 @@ self.addEventListener('install', function (event) {
 				return cache.addAll(chacheFiles);
 			})
 			.then(function () {
-				return self.skipWaiting();			
+				return self.skipWaiting();
 			})
 	);
 });

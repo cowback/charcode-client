@@ -7,7 +7,7 @@ const isLocalhost = Boolean(
 );
 
 export default function register() {
-    if ('serviceWorker' in navigator) {
+    if ('serviceWorker' in navigator && false) {
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location);
     if (publicUrl.origin !== window.location.origin) {
       return;
