@@ -5,25 +5,18 @@ const baseURL = 'http://localhost:8000/api/v1/'
 const request = (path, options) =>
   fetch(`${baseURL}${path}`, options) .then(res => res.json())
 
-const makePayload = (method, token, data) => data ? ({
+const makePayload = (method, data) => ({
   method,
   body: JSON.stringify(data),
   headers: new Headers({
-    'Content-Type': 'application/json'
-  })
-}) : token ? ({
-  method,
-  headers: new Headers({
     'Content-Type': 'application/json',
-    'authorization': token.toString()
+    'authorization': cookie.get().token
   })
-}) : ({
-  method
 })
 
 const http = Object.assign(window.fetch, {
-  get: path => request(path, makePayload('GET', cookie.get().token)),
-  post: (path, _, data) => request(path, makePayload('POST', _, data))
+  get: path => request(path, makePayload('GET')),
+  post: (path, data) => request(path, makePayload('POST', data))
 })
 
 export default http
