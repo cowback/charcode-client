@@ -31,6 +31,19 @@
   display: flex;
   justify-content: center;
   animation: grow .5s;
+  position: relative;
+}
+
+.modal__x {
+  position: absolute;
+  top: 5%;
+  right: 10%;
+  cursor: pointer;
+}
+
+.modal__x:after {
+  content: '×';
+  font-size: 3rem;
 }
 
 .modal--cover .modal__card  {

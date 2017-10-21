@@ -10,7 +10,8 @@ import './modal.css'
 const Modal = ({
   isOpen,
   onClick,
-  children
+  onClose,
+  children,
 }) => isOpen ? (
   <div
     onClick={onClick}
@@ -25,6 +26,7 @@ const Modal = ({
       )}
     >
       {children}
+      <span className="modal__x" onClick={onClose} />
     </div>
   </div>
 ) : null

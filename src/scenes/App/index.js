@@ -44,7 +44,10 @@ class App extends React.Component {
 
   // handleStep = (event) => this.setState({registerSteps: event.target.step})
 
-  handleChange = (event) => this.setState({[event.target.name]: event.target.value})
+  handleChange = event => this.setState({[event.target.name]: event.target.value})
+
+  handleClose = event =>
+    this.setState({ registerSteps: 0 })
 
   onLogoutButtonClick = () => this.props.logout() // set unlogged flag
 
@@ -77,13 +80,13 @@ class App extends React.Component {
   render() {
     return (
       <main>
-        <Modal isOpen={this.state.registerSteps === 1}>
+        <Modal onClose={this.handleClose} isOpen={this.state.registerSteps === 1}>
           <UserForm
             onLogin={this.handleLogin}
             onCreateAccount={this.handleAccountCreation}
           />
         </Modal>
-        <Modal isOpen={this.state.registerSteps === 2}>
+        <Modal onClose={this.handleClose} isOpen={this.state.registerSteps === 2}>
           <LocationForm
             onSubmit={this.onSubmitLocation}
           />
