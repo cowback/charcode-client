@@ -10,6 +10,8 @@ import Header from 'components/Header'
 import Button from 'components/Button'
 import Modal from 'components/Modal'
 import Panel from 'components/Panel'
+import UserForm from 'components/UserForm'
+import LocationForm from 'components/LocationForm'
 import Input from 'components/Input'
 import Footer from 'components/Footer'
 
@@ -48,7 +50,7 @@ class App extends React.Component {
 
   onLoginButtonClick = () => this.setState({registerSteps: 1,})
 
-  onAccessButtonClick = () => {
+  handleLogin = () => {
     // TODO: verify if user is registered
     // if yes, set logged flag and redirect to status page
     // this.props.login(this.state.phone, this.state.password)
@@ -73,29 +75,18 @@ class App extends React.Component {
   }
 
   render() {
-    const accessModalChildren = (
-      <Panel column centered>
-        <h3>Queijo</h3>
-        <Input type="text" name="phone" placeholder="Telefone (9 últimos digitos)" onChange={this.handleChange} />
-        <Input type="password" name="password" placeholder="Senha (mínimo 6 dígitos)" onChange={this.handleChange} />
-        <Button small ghost onClick={this.onAccessButtonClick}>Entrar</Button>
-      </Panel>
-    )
-    const cepModalChildren = (
-      <Panel column centered>
-        <h3>Goiabada</h3>
-        <Input type="text" name="cep" placeholder="CEP (apenas os 8 dígitos)" onChange={this.handleChange} />
-        <Button small ghost onClick={this.onCepButtonClick}>Cadastrar CEP</Button>
-      </Panel>
-    )
-
     return (
       <main>
         <Modal isOpen={this.state.registerSteps === 1}>
-          {accessModalChildren}
+          <UserForm
+            onLogin={this.handleLogin}
+            onCreateAccount={this.handleAccountCreation}
+          />
         </Modal>
         <Modal isOpen={this.state.registerSteps === 2}>
-          {cepModalChildren}
+          <LocationForm
+            onSubmit={this.onSubmitLocation}
+          />
         </Modal>
         <Header>
           <Button small ghost hide={this.props.isLogged} onClick={this.onLoginButtonClick}>

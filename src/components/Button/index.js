@@ -12,6 +12,7 @@ const Button = ({
   small,
   ghost,
   hide,
+  fit,
   disabled,
   onClick,
 }) => {
@@ -26,6 +27,7 @@ const Button = ({
       disabled={disabled}
       className={cn(
         'button',
+        fit && 'button--fit',
         small && 'button--small',
         ghost && 'button--ghost',
       )}

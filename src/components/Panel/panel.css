@@ -33,47 +33,61 @@
 }
 
 .panel-x-xxs {
-  padding: 0 0.125rem;
+  padding-right: 0.125rem;
+  padding-left: 0.125rem;
 }
 .panel-x-xs {
-  padding: 0 0.25rem;
+  padding-right: 0.25rem;
+  padding-left: 0.25rem;
 }
 .panel-x-s {
-  padding: 0 0.5rem;
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
 }
 .panel-x-m {
-  padding: 0 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
 }
 .panel-x-l {
-  padding: 0 2rem;
+  padding-right: 2rem;
+  padding-left: 2rem;
 }
 .panel-x-xl {
-  padding: 0 4rem;
+  padding-right: 4rem;
+  padding-left: 4rem;
 }
 .panel-x-xxl {
-  padding: 0 8rem;
+  padding-right: 8rem;
+  padding-left: 8rem;
 }
 
 .panel-y-xxs {
-  padding: 0.125rem 0;
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
 }
 .panel-y-xs {
-  padding: 0.25rem 0;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
 }
 .panel-y-s {
-  padding: 0.5rem 0;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 .panel-y-m {
-  padding: 1rem 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .panel-y-l {
-  padding: 2rem 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 .panel-y-xl {
-  padding: 4rem 0;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
 }
 .panel-y-xxl {
-  padding: 8rem 0;
+  padding-top: 8rem;
+  padding-bottom: 8rem;
 }
 
 .panel-below-xxs {

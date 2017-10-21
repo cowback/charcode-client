@@ -3,6 +3,7 @@ import React from 'react'
 import Panel from 'components/Panel'
 
 import cn from 'utils/cn'
+import media from 'utils/media'
 
 import './modal.css'
 
@@ -10,24 +11,22 @@ const Modal = ({
   isOpen,
   onClick,
   children
-}) => {
-
-  return !isOpen ? null : (
+}) => isOpen ? (
+  <div
+    onClick={onClick}
+    className={cn(
+      'modal',
+      media.lessThan.tabletLandscape() && 'modal--cover'
+    )}
+  >
     <div
-      onClick={onClick}
       className={cn(
-        'modal',
+        'modal__card',
       )}
     >
-      <div
-        className={cn(
-          'modal__card',
-        )}
-      >
-        {children}
-      </div>
+      {children}
     </div>
-  )
-}
+  </div>
+) : null
 
 export default Modal
