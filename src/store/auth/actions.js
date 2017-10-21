@@ -1,15 +1,20 @@
 import { createAction } from 'redux-actions'
+import cookie from 'utils/cookie'
 
-const setUser = createAction('SET_USER')
+const setAuthState = createAction('SET_USER')
 
-const login = (phone, password) => (dispatch, _, api) =>
-  api.login().then(user => dispatch(setUser(user)))
+const login = credentials => (dispatch, _, api) => api.login(credentials)
+  .then(({ token }) => {
+    cookie.set('token', token)
+    dispatch(setAuthState(true))
+  })
+  .catch(console.error)
 
 const logout = (phone) => (dispatch, _, api) =>
-  api.logout().then(() => dispatch(setUser(null)))
+  api.logout().then(() => dispatch(setAuthState(false)))
 
 export {
-  setUser,
+  setAuthState,
   login,
   logout
 }

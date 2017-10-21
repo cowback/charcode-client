@@ -1,16 +1,14 @@
 import { handleActions } from 'redux-actions'
-import { setUser } from './actions'
+import { setAuthState } from './actions'
 
 const initialState = {
   authenticated: false,
-  user: null
 }
 
 const reducer = handleActions({
-  [setUser]: (state, action) => ({
+  [setAuthState]: (state, action) => ({
     ...state,
-    user: action.payload,
-    authenticated: !!action.payload,
+    authenticated: action.payload,
   }),
 }, initialState)
 
