@@ -5,4 +5,5 @@ export default {
   login: ({ phone, password }) => {
     return http.post('signin', { mobile: phone, password })
   },
+  getUserStatus: (token) => Promise.resolve(3),
 }

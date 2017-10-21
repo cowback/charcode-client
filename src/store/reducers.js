@@ -1,5 +1,7 @@
 import authReducer from './auth'
+import statusReducer from './status'
 
 export default {
-  auth: authReducer
+  auth: authReducer,
+  status: statusReducer
 }
