@@ -4,5 +4,5 @@ export default {
   logout: () => Promise.resolve(false),
   login: credentials => http.post('auth', null, credentials),
   createAccount: user => http.post('user', null, user),
-  getUserStatus: (token) => Promise.resolve(3),
+  getUserStatus: () => http.get('user/status'),
 }

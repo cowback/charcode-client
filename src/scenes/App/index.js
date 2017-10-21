@@ -29,14 +29,14 @@ class App extends React.Component {
   componentWillReceiveProps({isLogged}) {
     if (this.props.isLogged !== isLogged) {
       this.props.goTo(
-        isLogged ? '/' : '/landing'
+        isLogged ? '/' : '/'
       )
     }
   }
 
   componentDidMount() {
     this.props.goTo(
-      this.props.isLogged ? '/' : '/landing'
+      this.props.isLogged ? '/' : '/'
     )
   }
 
