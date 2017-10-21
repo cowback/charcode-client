@@ -10,10 +10,16 @@ const login = credentials => (dispatch, _, api) => api.login(credentials)
   })
   .catch(console.error)
 
+const createAccount = user => (dispatch, _, api) => api
+  .createAccount(user)
+  .then(() => dispatch(login(user)))
+  .catch(console.error)
+
 const logout = (phone) => (dispatch, _, api) =>
   api.logout().then(() => dispatch(setAuthState(false)))
 
 export {
+  createAccount,
   setAuthState,
   login,
   logout

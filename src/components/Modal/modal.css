@@ -30,7 +30,7 @@
   background-color: #FFFFFF;
   display: flex;
   justify-content: center;
-  animation: grow .5s;
+  animation: grow .3s;
   position: relative;
 }
 
