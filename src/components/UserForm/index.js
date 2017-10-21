@@ -33,10 +33,10 @@ class UserForm extends React.Component {
           />
         </Panel>
         <Panel between="s">
-          <Button fit onClick={this.props.onLogin}>
+          <Button fit onClick={() => this.props.onLogin(this.state)}>
             Entrar
           </Button>
-          <Button fit ghost onClick={this.props.onCreateAccount}>
+          <Button fit ghost onClick={() => this.props.onCreateAccount(this.state)}>
             Criar Conta
           </Button>
         </Panel>

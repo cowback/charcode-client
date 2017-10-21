@@ -55,16 +55,14 @@ class App extends React.Component {
 
   onLoginButtonClick = () => this.setState({ registerSteps: 1, })
 
-  handleLogin = () => {
-    const { password, mobile } = this.state
-
+  handleLogin = ({ password, mobile }) => {
     this.props.login({ password, mobile }).then(this.handleClose)
   }
 
-  handleAccountCreation = () => {
-    const { password, mobile, cep } = this.state
-
-    this.props.createAccount({ password, mobile, cep }).then(this.handleClose)
+  handleAccountCreation = cep => {
+    this.props
+      .createAccount({ ...this.state.user, cep })
+      .then(this.handleClose)
   }
 
   render() {
@@ -73,7 +71,7 @@ class App extends React.Component {
         <Modal onClose={this.handleClose} isOpen={this.state.registerSteps === 1}>
           <UserForm
             onLogin={this.handleLogin}
-            onCreateAccount={() => this.setState({ registerSteps: 2 })}
+            onCreateAccount={user => this.setState({ registerSteps: 2, user })}
           />
         </Modal>
         <Modal onClose={this.handleClose} isOpen={this.state.registerSteps === 2}>
