@@ -1,5 +1,8 @@
+import http from 'utils/http'
 
 export default {
-  login: () => Promise.resolve({ phone: 123, password: 123 }),
-  logout: () => Promise.resolve(null),
+  logout: () => Promise.resolve(false),
+  login: ({ phone, password }) => {
+    return http.post('signin', { mobile: phone, password })
+  },
 }

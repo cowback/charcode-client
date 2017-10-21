@@ -72,8 +72,9 @@ class LandingPage extends React.Component {
   }
 
   onCepButtonClick = () => {
-    // TODO: set logged flag
-    this.props.login(this.state.phone, this.state.password)
+    const { password, phone } = this.state
+
+    this.props.login({ password, phone })
     this.resetState()
   }
 
@@ -94,14 +95,14 @@ class LandingPage extends React.Component {
         <h3>Queijo</h3>
         <Input type="text" name="phone" placeholder="Telefone (9 últimos digitos)" onChange={this.handleChange} />
         <Input type="password" name="password" placeholder="Senha (mínimo 6 dígitos)" onChange={this.handleChange} />
-        <Button small ghost onClick={this.onAccessButtonClick} disabled={this.state.phone.length !== 9 || this.state.password.length < 6}>Entrar</Button>
+        <Button small ghost onClick={this.onAccessButtonClick}>Entrar</Button>
       </Panel>
     )
     const cepModalChildren = (
       <Panel column centered>
         <h3>Goiabada</h3>
         <Input type="text" name="cep" placeholder="CEP (apenas os 11 dígitos)" onChange={this.handleChange} />
-        <Button small ghost onClick={this.onCepButtonClick} disabled={this.state.cep.length !== 11}>Cadastrar CEP</Button>
+        <Button small ghost onClick={this.onCepButtonClick}>Cadastrar CEP</Button>
       </Panel>
     )
 
