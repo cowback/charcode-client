@@ -56,7 +56,7 @@ class LandingPage extends React.Component {
         <LandingPagePanel column justify="center">
           <h2>Basta clicar aqui</h2>
           <Button onClick={this.onLoginButtonClick}>
-            Começe agora
+            Comece agora
           </Button>
         </LandingPagePanel>
       </main>
