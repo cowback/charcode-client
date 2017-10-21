@@ -4,11 +4,19 @@ import Panel from '../Panel'
 import Input from '../Input'
 import Button from '../Button'
 
+const errorMessages = {
+  '400': 'Telefone ou senha inválidos.',
+  '404': 'Usuário não encontrado.',
+}
+
 class UserForm extends React.Component {
   constructor(props) {
     super(props)
+
     this.state = {
-      wrongNumberMessage: '',
+      mobile: '',
+      password: '',
+      wrongNumberMessage: ''
     }
   }
 
@@ -27,6 +35,11 @@ class UserForm extends React.Component {
         <h4 style={{ textAlign: 'center' }}>
           Acesse sua conta ou cadastre-se
         </h4>
+        {this.props.error && (
+          <p style={{ color: 'red', textAlign: 'center' }}>
+            {errorMessages[this.props.error]}
+          </p>
+        )}
         <Panel column between="s">
           <Input
             type="number"
