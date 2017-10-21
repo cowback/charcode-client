@@ -1,9 +1,14 @@
 import cookie from './cookie';
 
-const baseURL = 'http://localhost:8000/api/v1/'
+const baseURL = 'http://localhost:3000/api/v1/'
 
 const request = (path, options) =>
-  fetch(`${baseURL}${path}`, options) .then(res => res.json())
+  fetch(`${baseURL}${path}`, options) .then(res => {
+    if (res.status >= 400) {
+      throw new Error(res.status);
+    }
+    return res.json()
+  })
 
 const makePayload = (method, data) => ({
   method,
