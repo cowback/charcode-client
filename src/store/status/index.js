@@ -12,7 +12,7 @@ const reducer = handleActions({
   }),
 }, initialState)
 
-export const status = state => state.status.status
+export const status = state => state.status.status ? state.status.status : initialState.status
 
 // const initialState = {
 //   authenticated: false,
