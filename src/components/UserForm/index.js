@@ -7,6 +7,11 @@ import Button from '../Button'
 class UserForm extends React.Component {
   constructor(props) {
     super(props)
+
+    this.state = {
+      mobile: '',
+      password: '',
+    }
   }
 
   handleChange = ({ target }) =>

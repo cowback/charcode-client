@@ -8,6 +8,9 @@ const login = credentials => (dispatch, _, api) => api.login(credentials)
     cookie.set('token', token)
     dispatch(setAuthState(true))
   })
+  .catch(error => {
+    debugger
+  })
 
 const reauthenticate = () => (dispatch, _, api) => {
   if (cookie.get().token)
