@@ -39,10 +39,10 @@ const PhoneImage = ({ size }) => (
 class LandingPage extends React.Component {
   render() {
     return (
-      <main className="landing-page" style={{ paddingTop: '4rem' }}>
+      <main className="landing-page" style={{ paddingTop: '6rem' }}>
         <LandingPagePanel inline>
-          <h2 style={{ marginBottom: 0 }}>Lorem ipsum dolor sit amet.</h2>
-          <PhoneImage size={media.greaterThan.phone() ? 600 : 400} />
+          <h2 style={{ margin: 0 }}>Lorem ipsum dolor sit amet.</h2>
+          <PhoneImage size={media.greaterThan.phone() ? 550 : 400} />
         </LandingPagePanel>
         <LandingPagePanel>
           <h2>Sed dorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>

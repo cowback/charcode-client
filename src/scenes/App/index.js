@@ -40,9 +40,9 @@ class App extends React.Component {
     )
   }
 
-  // TODO: integrate with API, set user logged/unlogged, add way to close modal
-
-  handleChange = event => this.setState({[event.target.name]: event.target.value})
+  handleChange = event => this.setState({
+    [event.target.name]: event.target.value
+  })
 
   handleClose = event => this.setState({
     registerSteps: 0,
@@ -51,24 +51,20 @@ class App extends React.Component {
     cep: '',
   })
 
-  onLogoutButtonClick = () => this.props.logout() // set unlogged flag
+  handleLogout = () => this.props.logout() // set unlogged flag
 
   onLoginButtonClick = () => this.setState({ registerSteps: 1, })
 
   handleLogin = () => {
-    // TODO: verify if user is registered
-    // if yes, set logged flag and redirect to status page
-    // this.props.login(this.state.mobile, this.state.password)
-    // if not, go to CEP step
-    this.setState({ registerSteps: 2 })
-    this.handleClose()
+    const { password, mobile } = this.state
+
+    this.props.login({ password, mobile }).then(this.handleClose)
   }
 
   handleAccountCreation = () => {
     const { password, mobile, cep } = this.state
 
-    this.props.createAccount({ password, mobile, cep })
-    this.handleClose()
+    this.props.createAccount({ password, mobile, cep }).then(this.handleClose)
   }
 
   render() {
@@ -77,7 +73,7 @@ class App extends React.Component {
         <Modal onClose={this.handleClose} isOpen={this.state.registerSteps === 1}>
           <UserForm
             onLogin={this.handleLogin}
-            onCreateAccount={this.handleAccountCreation}
+            onCreateAccount={() => this.setState({ registerSteps: 2 })}
           />
         </Modal>
         <Modal onClose={this.handleClose} isOpen={this.state.registerSteps === 2}>
@@ -89,7 +85,7 @@ class App extends React.Component {
           <Button small ghost hide={this.props.isLogged} onClick={this.onLoginButtonClick}>
             Entrar
           </Button>
-          <Button small ghost hide={!this.props.isLogged} onClick={this.onLogoutButtonClick}>
+          <Button small ghost hide={!this.props.isLogged} onClick={this.handleLogout}>
             Sair
           </Button>
         </Header>

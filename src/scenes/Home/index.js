@@ -46,7 +46,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <main className="home" style={{ paddingTop: '4rem' }}>
+      <main className="home" style={{ paddingTop: '6rem' }}>
         <HomePagePanel column centered>
           <CheckmarkImage size={300} status={this.props.status} />
           <h3>{`Status: ${this.props.status}`}</h3>
