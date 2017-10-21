@@ -20,9 +20,16 @@
 }
 
 .phone-image {
-  background-image: url('../../assets/phone.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   width: 50%;
+}
+
+.phone-image.phone-image-ok {
+  background-image: url('../../assets/phone.png');
+}
+
+.phone-image.phone-image-warning {
+  background-image: url('../../assets/phone.png');
 }

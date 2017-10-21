@@ -9,6 +9,7 @@ import Panel from 'components/Panel'
 import Button from 'components/Button'
 
 import media from 'utils/media'
+import cn from 'utils/cn'
 
 import './landing-page.css'
 
@@ -27,9 +28,13 @@ const LandingPagePanel = ({ children, ...rest }) => (
   </Panel>
 )
 
-const PhoneImage = ({ size }) => (
+const PhoneImage = ({ size, status }) => (
   <figure
-    className="phone-image"
+    className={cn(
+      'phone-image',
+      status === 'ok' && 'phone-image-ok',
+      status === 'warning' && 'phone-image-warning'
+    )}
     style={{
       height: size,
     }}
@@ -41,14 +46,15 @@ class LandingPage extends React.Component {
     return (
       <main className="landing-page" style={{ paddingTop: '6rem' }}>
         <LandingPagePanel inline>
-          <h2 style={{ margin: 0 }}>Lorem ipsum dolor sit amet.</h2>
-          <PhoneImage size={media.greaterThan.phone() ? 550 : 400} />
+          <h2 style={{ margin: 0 }}>Não se preocupe sem necessidade.</h2>
+          <PhoneImage size={media.greaterThan.phone() ? 550 : 400} status={'ok'} />
         </LandingPagePanel>
-        <LandingPagePanel>
-          <h2>Sed dorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+        <LandingPagePanel inline>
+          <PhoneImage size={media.greaterThan.phone() ? 550 : 400} status={'warning'} />
+          <h2 style={{ margin: 0 }}>Seja alertado de possíveis catástrofes.</h2>
         </LandingPagePanel>
         <LandingPagePanel column justify="center">
-          <h2>Fique constantemente blabla alerta</h2>
+          <h2>Basta clicar aqui</h2>
           <Button onClick={this.onLoginButtonClick}>
             Começe agora
           </Button>
