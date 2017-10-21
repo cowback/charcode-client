@@ -11,11 +11,18 @@ class UserForm extends React.Component {
     this.state = {
       mobile: '',
       password: '',
+      wrongNumberMessage: ''
     }
   }
 
-  handleChange = ({ target }) =>
-    this.setState({ [target.name]: target.value })
+  handleChange = ({ target }) => {
+    if (target.name === 'mobile' && target.value.substring(0, 3) !== '519') {
+      this.setState({ wrongNumberMessage: 'O número deve começar com 519' })
+    } else {
+      this.setState({ [target.name]: target.value })
+      if (target.name === 'mobile') this.setState({ wrongNumberMessage: '' })
+    }
+  }
 
   render() {
     return (
@@ -25,15 +32,20 @@ class UserForm extends React.Component {
         </h4>
         <Panel column between="s">
           <Input
-            type="text"
+            type="number"
             name="mobile"
-            placeholder="Telefone (9 últimos digitos)"
+            placeholder="Telefone (apenas os 11 digitos, incluindo DDD)"
+            minlength="11"
+            maxlength="11"
             onChange={this.handleChange}
           />
+        <span>{this.state.wrongNumberMessage}</span>
           <Input
             type="password"
             name="password"
-            placeholder="Senha (mínimo 6 dígitos)"
+            placeholder="Senha (mínimo 8 dígitos)"
+            minlength="8"
+            maxlength="16"
             onChange={this.handleChange}
           />
         </Panel>
