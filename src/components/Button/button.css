@@ -28,6 +28,10 @@
   padding: .5em 1em;
 }
 
+.button--fit {
+  width: 100%;
+}
+
 .button--ghost {
   background-color: transparent;
   color: #5CC18D;

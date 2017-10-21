@@ -23,7 +23,8 @@ const Panel = ({
   wrap,
   innerRef,
   sizing,
-  centered
+  centered,
+  style
 }) => (
   <Tag
     ref={innerRef}
@@ -36,6 +37,7 @@ const Panel = ({
       flexDirection: column ? 'column'
         : (row || wrap) ?  'row'
         : direction,
+      ...style
     }}
     className={
       cn(
