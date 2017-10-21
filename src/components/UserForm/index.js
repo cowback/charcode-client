@@ -21,7 +21,7 @@ class UserForm extends React.Component {
         <Panel column between="s">
           <Input
             type="text"
-            name="phone"
+            name="mobile"
             placeholder="Telefone (9 últimos digitos)"
             onChange={this.handleChange}
           />

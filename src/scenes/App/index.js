@@ -56,7 +56,7 @@ class App extends React.Component {
   onLoginButtonClick = () => this.setState({ registerSteps: 1, })
 
   handleLogin = ({ password, mobile }) => {
-    this.props.login({ password, mobile }).then(this.handleClose)
+    this.props.login({ password, mobile })
   }
 
   handleAccountCreation = cep => {
