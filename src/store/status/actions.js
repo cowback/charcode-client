@@ -7,7 +7,6 @@ const setStatus = createAction('SET_STATUS')
 const getUserStatus = (token) => (dispatch, _, api) =>
   api.getUserStatus()
   .then((data) => {
-    console.log(data)
     dispatch(setStatus(data))
   })
   .catch(console.error)

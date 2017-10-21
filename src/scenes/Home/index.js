@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import bindActionCreators from 'utils/action-binder'
-import { status } from 'store/status'
+import { status, message } from 'store/status'
 import { getUserStatus } from 'store/status/actions'
 
 import Panel from 'components/Panel'
@@ -51,6 +51,7 @@ class Home extends React.Component {
         <HomePagePanel column centered>
           <CheckmarkImage size={300} status={this.props.status} />
           <h3>{`Status: ${this.props.status}`}</h3>
+          <p>{this.props.message}</p>
         </HomePagePanel>
         {this.props.children}
       </main>
@@ -62,6 +63,7 @@ export default connect(
   state => ({
     location: state.location,
     status: status(state),
+    message: message(state)
   }),
   bindActionCreators({
     getUserStatus,

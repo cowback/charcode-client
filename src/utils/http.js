@@ -1,6 +1,6 @@
 import cookie from './cookie'
 
-const baseURL = `http://${window.location.hostname}:3000/api/v1/`
+const baseURL = `http://${window.location.hostname}:8000/api/v1/`
 
 const request = (path, options) =>
   fetch(`${baseURL}${path}`, options) .then(res => {
