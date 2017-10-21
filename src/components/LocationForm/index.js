@@ -18,8 +18,10 @@ class LocationForm extends React.Component {
         <h4 style={{ textAlign: 'center' }}>Insira seu CEP</h4>
         <Panel y="m" column>
           <Input
-            type="text"
+            type="number"
             name="cep"
+            minlength="8"
+            maxlength="8"
             placeholder="CEP (apenas os 8 dígitos)"
             onChange={this.handleChange}
           />
