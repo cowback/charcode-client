@@ -4,7 +4,7 @@ import { replace } from 'react-router-redux'
 
 import bindActionCreators from 'utils/action-binder'
 import { isLogged } from 'store/auth'
-import { login, logout } from 'store/auth/actions'
+import * as actions from 'store/auth/actions'
 
 import Header from 'components/Header'
 import Button from 'components/Button'
@@ -20,7 +20,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       registerSteps: 0,
-      phone: '',
+      mobile: '',
       password: '',
       cep: '',
     }
@@ -42,50 +42,47 @@ class App extends React.Component {
 
   // TODO: integrate with API, set user logged/unlogged, add way to close modal
 
-  // handleStep = (event) => this.setState({registerSteps: event.target.step})
+  handleChange = event => this.setState({[event.target.name]: event.target.value})
 
-  handleChange = (event) => this.setState({[event.target.name]: event.target.value})
+  handleClose = event => this.setState({
+    registerSteps: 0,
+    mobile: '',
+    password: '',
+    cep: '',
+  })
 
   onLogoutButtonClick = () => this.props.logout() // set unlogged flag
 
-  onLoginButtonClick = () => this.setState({registerSteps: 1,})
+  onLoginButtonClick = () => this.setState({ registerSteps: 1, })
 
   handleLogin = () => {
     // TODO: verify if user is registered
     // if yes, set logged flag and redirect to status page
-    // this.props.login(this.state.phone, this.state.password)
+    // this.props.login(this.state.mobile, this.state.password)
     // if not, go to CEP step
-    this.setState({registerSteps: 2,})
+    this.setState({ registerSteps: 2 })
+    this.handleClose()
   }
 
-  onCepButtonClick = () => {
-    const { password, phone } = this.state
+  handleAccountCreation = () => {
+    const { password, mobile, cep } = this.state
 
-    this.props.login({ password, phone })
-    this.resetState()
-  }
-
-  resetState = () => {
-    this.setState({
-      registerSteps: 0,
-      phone: '',
-      password: '',
-      cep: '',
-    })
+    this.props.createAccount({ password, mobile, cep })
+    this.handleClose()
   }
 
   render() {
     return (
       <main>
-        <Modal isOpen={this.state.registerSteps === 1}>
+        <Modal onClose={this.handleClose} isOpen={this.state.registerSteps === 1}>
           <UserForm
             onLogin={this.handleLogin}
             onCreateAccount={this.handleAccountCreation}
           />
         </Modal>
-        <Modal isOpen={this.state.registerSteps === 2}>
+        <Modal onClose={this.handleClose} isOpen={this.state.registerSteps === 2}>
           <LocationForm
-            onSubmit={this.onSubmitLocation}
+            onSubmit={this.handleAccountCreation}
           />
         </Modal>
         <Header>
@@ -109,8 +106,7 @@ export default connect(
     isLogged: isLogged(state),
   }),
   bindActionCreators({
-    login,
-    logout,
+    ...actions,
     goTo: path => replace(path)
   })
 )(App)
