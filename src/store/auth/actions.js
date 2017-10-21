@@ -19,8 +19,10 @@ const createAccount = user => (dispatch, _, api) => api
   .then(() => dispatch(login(user)))
   .catch(console.error)
 
-const logout = (phone) => (dispatch, _, api) =>
-  api.logout().then(() => dispatch(setAuthState(false)))
+const logout = (phone) => dispatch => {
+  dispatch(setAuthState(false))
+  cookie.set('token', '')
+}
 
 export {
   reauthenticate,
