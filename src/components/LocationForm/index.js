@@ -26,7 +26,7 @@ class LocationForm extends React.Component {
             onChange={this.handleChange}
           />
         </Panel>
-        <Button onClick={this.props.onSubmit}>
+        <Button onClick={() => this.props.onSubmit(this.state.cep)}>
           Finalizar Cadastro
         </Button>
       </Panel>

@@ -18,7 +18,7 @@ const HomePagePanel = ({children, ...rest}) => (
       className="home-panel__content"
       direction={media.greaterThan.phone() ? 'row' : 'column'}
       align="center"
-      justify={media.greaterThan.phone() ? 'space-between' : 'center'}
+      justify="center"
       between={media.greaterThan.phone() && 'xl'}
       {...rest}
     >
@@ -31,7 +31,8 @@ const CheckmarkImage = ({size, status}) => (
   <figure
     className={cn(
       'image',
-      status === 'ok' && 'image--ok'
+      status === 'ok' && 'image--ok',
+      status !== 'ok' && 'image--warning'
     )}
     style={{
       height: size,

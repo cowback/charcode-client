@@ -11,6 +11,7 @@
   /*min-height: 100vh;*/
   margin: 0 auto;
   max-width: 800px;
+  min-height: 100vh;
 }
 
 .home-panel:nth-child(odd) {
@@ -29,4 +30,8 @@
 
 .home .image--ok {
   background-image: url('../../assets/checkmark.png');
+}
+
+.home .image--warning {
+  background-image: url('../../assets/warning.png');
 }
