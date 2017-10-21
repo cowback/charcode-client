@@ -38,6 +38,10 @@ class App extends React.Component {
     this.props.goTo(
       this.props.isLogged ? '/' : '/landing'
     )
+
+    if (!this.props.isLogged) {
+      this.props.reauthenticate()
+    }
   }
 
   handleChange = event => this.setState({
@@ -56,7 +60,7 @@ class App extends React.Component {
   onLoginButtonClick = () => this.setState({ registerSteps: 1, })
 
   handleLogin = ({ password, mobile }) => {
-    this.props.login({ password, mobile })
+    this.props.login({ password, mobile }).then(this.handleClose)
   }
 
   handleAccountCreation = cep => {
