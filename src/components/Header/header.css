@@ -4,6 +4,7 @@
   z-index: 1;
   max-width: 800px;
   margin: auto;
+  margin-bottom: 100px;
   right: 50%;
   transform: translateX(50%);
 }

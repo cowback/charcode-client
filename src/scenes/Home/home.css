@@ -1,0 +1,32 @@
+.home {
+  background-color: #def1e7;
+}
+
+.home-panel {
+  position: relative;
+  text-align: center;
+}
+
+.home-panel__content {
+  /*min-height: 100vh;*/
+  margin: 0 auto;
+  max-width: 800px;
+}
+
+.home-panel:nth-child(odd) {
+  background-color: white;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+.home .image {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  width: 50%;
+  margin-bottom: 0;
+}
+
+.home .image--ok {
+  background-image: url('../../assets/checkmark.png');
+}
