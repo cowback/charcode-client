@@ -16,9 +16,9 @@ const Footer = () => (
       row
       justify="space-around"
     >
+      <a target="_blank" rel="noopener noreferrer" href="https://github.com/cowback/ABOUT_US.MD">Sobre nós</a>
       <a target="_blank" rel="noopener noreferrer" href="https://github.com/cowback/">GitHub</a>
-      <a target="_blank" rel="noopener noreferrer" href="https://github.com/cowback/">Link</a>
-      <a target="_blank" rel="noopener noreferrer" href="https://github.com/cowback/">Outro link</a>
+      <a target="_blank" rel="noopener noreferrer" href="https://darksky.net/poweredby/">Powered By DarkSky</a>
     </Panel>
   </Panel>
 )
